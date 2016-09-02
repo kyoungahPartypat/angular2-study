@@ -1,23 +1,17 @@
 import { Component } from '@angular/core';
 
-export class Twice {
-  id: number;
-  name: string;
-  age: number;
-  nick: string;
-  image: string;
-}
+import { Twice } from './Twice';
 
 const TWICE: Twice[] = [
-  {id: 1, name: '나연', age: 22, nick: "나부기", image: "./public/image/naYeon.jpg"},
-  {id: 2, name: '정연', age: 21, nick: "유또막", image: "./public/image/jeongYeon.jpg"},
-  {id: 3, name: '지효', age: 20, nick: "갓지효", image: "./public/image/juHyo.jpg"},
-  {id: 4, name: '다현', age: 19, nick: "두부", image: "./public/image/daHyun.jpg"},
-  {id: 5, name: '채영', age: 18, nick: "챙", image: "./public/image/chaeYoung.jpg"},
-  {id: 6, name: '모모', age: 21, nick: "모모링", image: "./public/image/momo.jpg"},
-  {id: 7, name: '사나', age: 21, nick: "사또떨", image: "./public/image/sana.jpg"},
-  {id: 8, name: '미나', age: 20, nick: "정남이", image: "./public/image/mina.jpg"},
-  {id: 9, name: '쯔위', age: 18, nick: "요다", image: "./public/image/tzuYu.jpg"}
+  {id: 1, name: '나연', age: 22, nick: "나부기", image: "../public/image/naYeon.jpg"},
+  {id: 2, name: '정연', age: 21, nick: "유또막", image: "../public/image/jeongYeon.jpg"},
+  {id: 3, name: '지효', age: 20, nick: "갓지효", image: "../public/image/juHyo.jpg"},
+  {id: 4, name: '다현', age: 19, nick: "두부", image: "../public/image/daHyun.jpg"},
+  {id: 5, name: '채영', age: 18, nick: "챙", image: "../public/image/chaeYoung.jpg"},
+  {id: 6, name: '모모', age: 21, nick: "모모링", image: "../public/image/momo.jpg"},
+  {id: 7, name: '사나', age: 21, nick: "사또떨", image: "../public/image/sana.jpg"},
+  {id: 8, name: '미나', age: 20, nick: "정남이", image: "../public/image/mina.jpg"},
+  {id: 9, name: '쯔위', age: 18, nick: "요다", image: "../public/image/tzuYu.jpg"}
 ];
 
 @Component({
@@ -37,15 +31,6 @@ const TWICE: Twice[] = [
 
       #content > ul.members > li > span.selected{border:1px solid #cacaca; background-color:#cacaca; color:#FFF}
       #content > ul.members > li > span.selected > span.member-number{color:#cacaca; background-color:#FFF}
-
-      #content > div.detail{width:300px; float:left; margin-left:30px; text-align:center}
-      #content > div.detail span{font-size:16px; color:#bdbfc3}
-
-      #content > div.detail > strong{font-size:20px; color:#bdbfc3}
-
-      #content > div.detail > img{width:100%; height:auto; margin-top:5px; margin-bottom:10px; border:2px solid #42d8cd}
-
-      #content > div.detail > span.member-nick > input{height:25px; padding-left:10px; color:#bdbfc3; border:1px solid #bdbfc3; border-radius:5px}
     `],
   template: `
       <h1>{{title}}</h1>
@@ -55,12 +40,7 @@ const TWICE: Twice[] = [
             <span [class.selected]="member === selectedMember"><span class="member-number">{{member.id}}</span> {{member.name}}</span>
           </li>
         </ul>
-        <div class="detail" *ngIf="selectedMember">
-          <strong>{{selectedMember.name}}</strong>
-          <span class="member-age">({{selectedMember.age}}세)</span>
-          <img src={{selectedMember.image}}/>
-          <span class="member-nick">별명: <input [(ngModel)]="selectedMember.nick" placeholder="name"/></span>
-        </div>
+        <member-detail [member]="selectedMember"></member-detail>
       </div>
   `
 })

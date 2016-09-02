@@ -9,12 +9,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var Twice_1 = require('./Twice');
 var MemberDetailComponent = (function () {
     function MemberDetailComponent() {
     }
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Twice_1.Twice)
+    ], MemberDetailComponent.prototype, "member", void 0);
     MemberDetailComponent = __decorate([
         core_1.Component({
             selector: 'member-detail',
+            styles: ["\n    div.detail{width:300px; float:left; margin-left:30px; text-align:center}\n    div.detail span{font-size:16px; color:#bdbfc3}\n\n    div.detail > strong{font-size:20px; color:#bdbfc3}\n\n    div.detail > img{width:100%; height:auto; margin-top:5px; margin-bottom:10px; border:2px solid #42d8cd}\n\n    div.detail > span.member-nick > input{height:25px; padding-left:10px; color:#bdbfc3; border:1px solid #bdbfc3; border-radius:5px}\n  "],
+            template: "\n    <div class=\"detail\" *ngIf=\"member\">\n      <strong>{{member.name}}</strong>\n      <span class=\"member-age\">({{member.age}}\uC138)</span>\n      <img src={{member.image}}/>\n      <span class=\"member-nick\">\uBCC4\uBA85: <input [(ngModel)]=\"member.nick\" placeholder=\"name\"/></span>\n    </div>\n  "
         }), 
         __metadata('design:paramtypes', [])
     ], MemberDetailComponent);

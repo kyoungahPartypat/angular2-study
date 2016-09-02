@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 
-import { AppComponent } from './app.component';
+import { AppComponent } from './component/app.component';
+import { MemberDetailComponent } from './component/member-detail.component';
 
 @NgModule({
   imports: [
@@ -11,7 +12,8 @@ import { AppComponent } from './app.component';
   ],
 
   declarations: [
-    AppComponent
+    AppComponent,
+    MemberDetailComponent
   ],
 
   bootstrap: [AppComponent]
