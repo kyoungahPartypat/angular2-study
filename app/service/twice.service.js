@@ -14,7 +14,11 @@ var TwiceService = (function () {
     function TwiceService() {
     }
     TwiceService.prototype.getMembers = function () {
-        return mock_twice_1.TWICE;
+        return Promise.resolve(mock_twice_1.TWICE);
+    };
+    TwiceService.prototype.getMembersSlowly = function () {
+        var _this = this;
+        return new Promise(function (resolve) { return setTimeout(resolve, 2000); }).then(function () { return _this.getMembers(); });
     };
     TwiceService = __decorate([
         core_1.Injectable(), 

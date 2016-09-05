@@ -44,10 +44,14 @@ export class AppComponent {
   constructor(private twiceService: TwiceService) { }
 
   getMembers(): void {
-    this.twice = this.twiceService.getMembers();
+    this.twiceService.getMembersSlowly().then(twice => this.twice = twice);
   }
 
   onSelect(member: Twice): void {
     this.selectedMember = member;
+  }
+
+  ngOnInit(): void {
+    this.getMembers();
   }
 }

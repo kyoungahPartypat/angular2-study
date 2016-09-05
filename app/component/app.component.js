@@ -16,10 +16,14 @@ var AppComponent = (function () {
         this.title = "ONE IN A MILLION! TWICE!";
     }
     AppComponent.prototype.getMembers = function () {
-        this.twice = this.twiceService.getMembers();
+        var _this = this;
+        this.twiceService.getMembersSlowly().then(function (twice) { return _this.twice = twice; });
     };
     AppComponent.prototype.onSelect = function (member) {
         this.selectedMember = member;
+    };
+    AppComponent.prototype.ngOnInit = function () {
+        this.getMembers();
     };
     AppComponent = __decorate([
         core_1.Component({
