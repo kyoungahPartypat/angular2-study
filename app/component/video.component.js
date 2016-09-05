@@ -18,17 +18,28 @@ var VideoComponent = (function () {
         var _this = this;
         this.videoService.getVideos().then(function (video) { return _this.video = video; });
     };
+    VideoComponent.prototype.onListSelect = function (member) {
+        var _this = this;
+        this.video.map(function (item, i) {
+            if (member === item.member) {
+                _this.subList.push(item);
+            }
+        });
+    };
     VideoComponent.prototype.onSelect = function (video) {
         this.selectedVideo = video;
     };
     VideoComponent.prototype.ngOnInit = function () {
+        this.subList = [];
+        this.list = video_service_1.List;
         this.getVideos();
     };
     VideoComponent = __decorate([
         core_1.Component({
             selector: 'twice-video',
+            styles: ["\n    #video{width:500px; margin-left:auto; margin-right:auto}\n\n    #video > ul{width:100%; padding:5px}\n    #video > ul:after{content:\"\"; display:block; clear:both}\n    #video > ul > li{width:100px; float:left; padding:5px; box-sizing:border-box}\n    #video > ul > li > button{width:100%; height:30px}\n    #video > ul.videos > li > button{border:1px solid #42d8cd; background-color:#FFF}\n    #video > ul.members > li > button{background-color:42d8cd; color:#FFF; border:none}\n\n    "],
             providers: [video_service_1.VideoService],
-            template: "\n    <div id = \"video\">\n      <video-detail [video]=\"selectedVideo\"></video-detail>\n      <ul class=\"members\">\n        <li *ngFor=\"let member of List\">\n          <button>{{member}}</button>\n        </li>\n      </ul>\n    </div>\n  "
+            template: "\n    <div id = \"video\">\n      <video-detail [video]=\"selectedVideo\"></video-detail>\n      <ul class = \"videos\">\n        <li *ngFor=\"let video of subList\">\n          <button (click)=\"onSelect(video)\">{{video.title}}</button>\n        </li>\n      </ul>\n      <ul class=\"members\">\n        <li *ngFor=\"let member of list\">\n          <button (click)=\"onListSelect(member)\">{{member}}</button>\n        </li>\n      </ul>\n    </div>\n  "
         }), 
         __metadata('design:paramtypes', [video_service_1.VideoService])
     ], VideoComponent);
