@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-import { Twice } from './Twice';
+import { Twice } from '../model/Twice';
 
 @Component({
   selector: 'member-detail',

@@ -1,18 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
-import { Twice } from './Twice';
-
-const TWICE: Twice[] = [
-  {id: 1, name: '나연', age: 22, nick: "나부기", image: "../public/image/naYeon.jpg"},
-  {id: 2, name: '정연', age: 21, nick: "유또막", image: "../public/image/jeongYeon.jpg"},
-  {id: 3, name: '지효', age: 20, nick: "갓지효", image: "../public/image/juHyo.jpg"},
-  {id: 4, name: '다현', age: 19, nick: "두부", image: "../public/image/daHyun.jpg"},
-  {id: 5, name: '채영', age: 18, nick: "챙", image: "../public/image/chaeYoung.jpg"},
-  {id: 6, name: '모모', age: 21, nick: "모모링", image: "../public/image/momo.jpg"},
-  {id: 7, name: '사나', age: 21, nick: "사또떨", image: "../public/image/sana.jpg"},
-  {id: 8, name: '미나', age: 20, nick: "정남이", image: "../public/image/mina.jpg"},
-  {id: 9, name: '쯔위', age: 18, nick: "요다", image: "../public/image/tzuYu.jpg"}
-];
+import { Twice } from '../model/Twice';
+import { TwiceService } from '../service/twice.service';
 
 @Component({
   selector: 'twice',
@@ -32,6 +21,7 @@ const TWICE: Twice[] = [
       #content > ul.members > li > span.selected{border:1px solid #cacaca; background-color:#cacaca; color:#FFF}
       #content > ul.members > li > span.selected > span.member-number{color:#cacaca; background-color:#FFF}
     `],
+  providers: [TwiceService],
   template: `
       <h1>{{title}}</h1>
       <div id="content">
@@ -47,8 +37,15 @@ const TWICE: Twice[] = [
 
 export class AppComponent {
   title = "ONE IN A MILLION! TWICE!";
-  twice = TWICE;
+
+  twice: Twice[];
   selectedMember: Twice;
+
+  constructor(private twiceService: TwiceService) { }
+
+  getMembers(): void {
+    this.twice = this.twiceService.getMembers();
+  }
 
   onSelect(member: Twice): void {
     this.selectedMember = member;
