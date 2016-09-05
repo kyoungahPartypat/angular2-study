@@ -12,7 +12,9 @@ var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
 var forms_1 = require('@angular/forms');
 var app_component_1 = require('./component/app.component');
+var member_component_1 = require('./component/member.component');
 var member_detail_component_1 = require('./component/member-detail.component');
+var twice_service_1 = require('./service/twice.service');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -24,7 +26,11 @@ var AppModule = (function () {
             ],
             declarations: [
                 app_component_1.AppComponent,
+                member_component_1.MemberComponent,
                 member_detail_component_1.MemberDetailComponent
+            ],
+            providers: [
+                twice_service_1.TwiceService
             ],
             bootstrap: [app_component_1.AppComponent]
         }), 
