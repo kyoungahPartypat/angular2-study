@@ -40,7 +40,7 @@ export class MemberComponent implements OnInit {
   constructor(private twiceService: TwiceService) { }
 
   getMembers(): void {
-    this.twiceService.getMembersSlowly().then(twice => this.twice = twice);
+    this.twiceService.getMembers().then(twice => this.twice = twice);
   }
 
   onSelect(member: Twice): void {

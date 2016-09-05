@@ -9,19 +9,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var AppComponent = (function () {
-    function AppComponent() {
-        this.title = "ONE IN A MILLION! TWICE!";
+var TwiceYoutube_1 = require('../model/TwiceYoutube');
+var VideoDetailComponent = (function () {
+    function VideoDetailComponent() {
     }
-    AppComponent = __decorate([
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', TwiceYoutube_1.TwiceYoutube)
+    ], VideoDetailComponent.prototype, "video", void 0);
+    VideoDetailComponent = __decorate([
         core_1.Component({
-            selector: 'twice',
-            styles: ["\n      h1{text-align:center; margin-top:10px; margin-bottom:30px; color:#42d8cd}\n\n      nav{width:150px; margin-left:auto; margin-right:auto; margin-bottom:20px}\n      nav:after{content:\" \"; display:block; clear:both}\n      nav > a{display:block; float:left; width:50%; color:#42d8cd; text-align:center; text-decoration:none}\n\n  "],
-            template: "\n    <h1>{{title}}</h1>\n    <nav>\n      <a routerLink = \"/members\">Members</a>\n      <a routerLink = \"/video\">Video</a>\n    </nav>\n    <router-outlet></router-outlet>\n  "
+            selector: 'video-detail',
+            template: "\n    <div *ngIf=\"video\">\n      <iframe width = \"100%\" height = \"100%\" src=\"{{video.src}}\" frameborder=\"0\" allowfullscreen></iframe>\n    </div>\n  "
         }), 
         __metadata('design:paramtypes', [])
-    ], AppComponent);
-    return AppComponent;
+    ], VideoDetailComponent);
+    return VideoDetailComponent;
 }());
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+exports.VideoDetailComponent = VideoDetailComponent;
+//# sourceMappingURL=video-detail.component.js.map

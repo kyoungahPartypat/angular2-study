@@ -16,7 +16,7 @@ var MemberComponent = (function () {
     }
     MemberComponent.prototype.getMembers = function () {
         var _this = this;
-        this.twiceService.getMembersSlowly().then(function (twice) { return _this.twice = twice; });
+        this.twiceService.getMembers().then(function (twice) { return _this.twice = twice; });
     };
     MemberComponent.prototype.onSelect = function (member) {
         this.selectedMember = member;

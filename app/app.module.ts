@@ -2,26 +2,33 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 
-import { AppRouting } from './app.routing';
+import { routing } from './app.routing';
 import { AppComponent } from './component/app.component';
 import { MemberComponent } from './component/member.component'
 import { MemberDetailComponent } from './component/member-detail.component';
+import { VideoComponent } from './component/video.component';
+import { VideoDetailComponent } from './component/video-detail.component';
 import { TwiceService } from './service/twice.service';
+import { VideoService } from './service/video.service';
 
 @NgModule({
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    routing
   ],
 
   declarations: [
     AppComponent,
     MemberComponent,
-    MemberDetailComponent
+    MemberDetailComponent,
+    VideoComponent,
+    VideoDetailComponent
   ],
 
   providers: [
-    TwiceService
+    TwiceService,
+    VideoService
   ],
 
   bootstrap: [AppComponent]

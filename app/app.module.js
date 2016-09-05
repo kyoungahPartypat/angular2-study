@@ -11,10 +11,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
 var forms_1 = require('@angular/forms');
+var app_routing_1 = require('./app.routing');
 var app_component_1 = require('./component/app.component');
 var member_component_1 = require('./component/member.component');
 var member_detail_component_1 = require('./component/member-detail.component');
+var video_component_1 = require('./component/video.component');
+var video_detail_component_1 = require('./component/video-detail.component');
 var twice_service_1 = require('./service/twice.service');
+var video_service_1 = require('./service/video.service');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -22,15 +26,19 @@ var AppModule = (function () {
         core_1.NgModule({
             imports: [
                 platform_browser_1.BrowserModule,
-                forms_1.FormsModule
+                forms_1.FormsModule,
+                app_routing_1.routing
             ],
             declarations: [
                 app_component_1.AppComponent,
                 member_component_1.MemberComponent,
-                member_detail_component_1.MemberDetailComponent
+                member_detail_component_1.MemberDetailComponent,
+                video_component_1.VideoComponent,
+                video_detail_component_1.VideoDetailComponent
             ],
             providers: [
-                twice_service_1.TwiceService
+                twice_service_1.TwiceService,
+                video_service_1.VideoService
             ],
             bootstrap: [app_component_1.AppComponent]
         }), 
