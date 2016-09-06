@@ -17,6 +17,7 @@ var member_component_1 = require('./component/member.component');
 var member_detail_component_1 = require('./component/member-detail.component');
 var video_component_1 = require('./component/video.component');
 var video_detail_component_1 = require('./component/video-detail.component');
+var video_input_component_1 = require('./component/video-input.component');
 var twice_service_1 = require('./service/twice.service');
 var video_service_1 = require('./service/video.service');
 var AppModule = (function () {
@@ -34,7 +35,8 @@ var AppModule = (function () {
                 member_component_1.MemberComponent,
                 member_detail_component_1.MemberDetailComponent,
                 video_component_1.VideoComponent,
-                video_detail_component_1.VideoDetailComponent
+                video_detail_component_1.VideoDetailComponent,
+                video_input_component_1.VideoInputComponent
             ],
             providers: [
                 twice_service_1.TwiceService,

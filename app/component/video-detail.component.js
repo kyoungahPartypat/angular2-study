@@ -16,7 +16,7 @@ var VideoDetailComponent = (function () {
         this.sanitizer = sanitizer;
     }
     VideoDetailComponent.prototype.updateVideoUrl = function (id) {
-        this.url = this.sanitizer.bypassSecurityTrustResourceUrl("https://youtube.com/embed/" + id);
+        this.url = this.sanitizer.bypassSecurityTrustResourceUrl("https://youtube.com/embed/" + id + "?&autoplay=1");
         return this.url;
     };
     __decorate([

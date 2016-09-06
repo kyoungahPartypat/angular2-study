@@ -11,6 +11,8 @@ exports.YOUTUBE = [
     { member: "정연", title: "귀여운 말투", id: "sRx2viaagpw" },
     { member: "다현", title: "다현이 애교", id: "cU30D0wNn78" },
     { member: "채영", title: "귀여운 말투", id: "UOK5mhxD9-8" },
-    { member: "미나", title: "입덕 영상", id: "prPffCBX0Wk" }
+    { member: "미나", title: "입덕 영상", id: "prPffCBX0Wk" },
+    { member: "지효", title: "갓지효", id: "K_LpWEB4hqw" },
+    { member: "쯔위", title: "이쁨주희", id: "Nvm1REHwyLw" }
 ];
 //# sourceMappingURL=mock-youtube.js.map

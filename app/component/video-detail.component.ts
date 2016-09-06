@@ -24,13 +24,12 @@ import { TwiceYoutube } from '../model/TwiceYoutube';
 export class VideoDetailComponent {
   @Input()
   video: TwiceYoutube;
-  dangerousUrl: string;
   url: SafeResourceUrl;
 
   constructor(private sanitizer: DomSanitizationService) {}
 
   updateVideoUrl(id: string) {
-    this.url = this.sanitizer.bypassSecurityTrustResourceUrl("https://youtube.com/embed/" + id);
+    this.url = this.sanitizer.bypassSecurityTrustResourceUrl("https://youtube.com/embed/" + id + "?&autoplay=1");
 
     return this.url;
   }

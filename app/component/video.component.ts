@@ -30,6 +30,8 @@ import { List, VideoService } from '../service/video.service';
           <button (click)="onListSelect(member)">{{member}}</button>
         </li>
       </ul>
+      <button (click)="onInsertVideo()">직접 입력하기</button>
+      <video-input></video-input>
     </div>
   `
 })
@@ -39,6 +41,7 @@ export class VideoComponent implements OnInit{
   list: string[];
   video: TwiceYoutube[];
   selectedVideo: TwiceYoutube;
+  isShowInputVideo: boolean;
 
   constructor(private videoService: VideoService) { }
 
@@ -59,6 +62,10 @@ export class VideoComponent implements OnInit{
 
   onSelect(video: TwiceYoutube): void {
     this.selectedVideo = video;
+  }
+
+  onInsertVideo(): void {
+    this.isShowInputVideo = true;
   }
 
   ngOnInit(): void {
