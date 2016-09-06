@@ -20,6 +20,8 @@ var VideoComponent = (function () {
     };
     VideoComponent.prototype.onListSelect = function (member) {
         var _this = this;
+        this.subList = [];
+        this.selectedVideo = null;
         this.video.map(function (item, i) {
             if (member === item.member) {
                 _this.subList.push(item);
@@ -30,7 +32,6 @@ var VideoComponent = (function () {
         this.selectedVideo = video;
     };
     VideoComponent.prototype.ngOnInit = function () {
-        this.subList = [];
         this.list = video_service_1.List;
         this.getVideos();
     };

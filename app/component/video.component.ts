@@ -47,6 +47,9 @@ export class VideoComponent implements OnInit{
   }
 
   onListSelect(member) : void {
+    this.subList = [];
+    this.selectedVideo = null;
+
     this.video.map((item, i)=>{
       if(member === item.member){
         this.subList.push(item);
@@ -59,7 +62,6 @@ export class VideoComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.subList = [];
     this.list = List;
     this.getVideos();
   }
