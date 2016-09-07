@@ -35,7 +35,7 @@ var VideoComponent = (function () {
         this.isShowInputVideo = true;
     };
     VideoComponent.prototype.ngOnInit = function () {
-        this.list = video_service_1.List;
+        this.list = video_service_1.VideoService.getLists();
         this.getVideos();
     };
     VideoComponent = __decorate([

@@ -10,14 +10,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var mock_youtube_1 = require('../model/mock-youtube');
-var List = ['단체', '나연', '정연', '지효', '다현', '채영', '모모', '사나', '미나', '쯔위'];
-exports.List = List;
 var VideoService = (function () {
     function VideoService() {
     }
+    VideoService.getLists = function () {
+        return ['단체', '나연', '정연', '지효', '다현', '채영', '모모', '사나', '미나', '쯔위'];
+    };
+    ;
     VideoService.prototype.getVideos = function () {
         return Promise.resolve(mock_youtube_1.YOUTUBE);
     };
+    ;
     VideoService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [])

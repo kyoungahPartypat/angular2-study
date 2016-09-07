@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { TwiceYoutube } from '../model/TwiceYoutube';
-import { List, VideoService } from '../service/video.service';
+import { VideoService } from '../service/video.service';
 
 @Component({
   selector: 'twice-video',
@@ -69,7 +69,7 @@ export class VideoComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.list = List;
+    this.list = VideoService.getLists();
     this.getVideos();
   }
 }
