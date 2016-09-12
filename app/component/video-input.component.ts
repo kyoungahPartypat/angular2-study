@@ -8,28 +8,35 @@ import { VideoService } from '../service/video.service';
   styles: [`
 
     `],
+  providers: [VideoService],
   template: `
     <div  class="video-input">
-      <select>
+      <select #member>
         <option *ngFor="let name of inputList" [value] ="name">{{name}}</option>
       </select>
-      <form (ngSubmit)="onSubmit()" [formGroup]="form">
-        <input type="text" #name placeholder="title"/>
-        <input type="text" #url placeholder="url"/>
-        <button type="submit" (click)="textNormalization()">확인</button>
-      </form>
+
+      <input type="text" #title placeholder="title"/>
+      <input type="text" #url placeholder="url"/>
+      <button type="submit" (click)="addVideos(member.value, title.value, url.value)">확인</button>
+
     </div>
   `
 })
 
 export class VideoInputComponent {
   inputList: string[];
+  mode = 'Promise';
 
-  constructor() {
+  constructor(private videoService: VideoService) {
     this.inputList = VideoService.getLists();
   }
 
   textNormalization(): void {
     console.log('hi');
   }
+
+  addVideos (name: string, title:string, url:string) {
+    this.videoService.addVideos(name, title, url);
+  }
+
 }

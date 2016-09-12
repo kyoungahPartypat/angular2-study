@@ -1,9 +1,12 @@
 import { Component, Input } from '@angular/core';
 import { DomSanitizationService, SafeResourceUrl, SafeUrl } from '@angular/platform-browser';
+
 import { TwiceYoutube } from '../model/TwiceYoutube';
+import { VideoService } from '../service/video.service';
 
 @Component({
   selector: 'video-detail',
+  providers: [VideoService],
   styles: [`
       div.show-video{width:400px; height:330px; margin-left:auto; margin-right:auto; position:relative;}
       div.show-video > h3{width:100%; text-align:center; font-size:15px; color:#bdbfc3}
@@ -26,7 +29,7 @@ export class VideoDetailComponent {
   video: TwiceYoutube;
   url: SafeResourceUrl;
 
-  constructor(private sanitizer: DomSanitizationService) {}
+  constructor(private sanitizer: DomSanitizationService, private videoService: VideoService) {}
 
   updateVideoUrl(id: string) {
     this.url = this.sanitizer.bypassSecurityTrustResourceUrl("https://youtube.com/embed/" + id + "?&autoplay=1");
