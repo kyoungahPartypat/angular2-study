@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
+
 import { VideoService } from '../service/video.service';
 
 @Component({
@@ -11,8 +13,11 @@ import { VideoService } from '../service/video.service';
       <select>
         <option *ngFor="let name of inputList" [value] ="name">{{name}}</option>
       </select>
-      <input type="text" />
-      <button>확인</button>
+      <form (ngSubmit)="onSubmit()" [formGroup]="form">
+        <input type="text" #name placeholder="title"/>
+        <input type="text" #url placeholder="url"/>
+        <button type="submit" (click)="textNormalization()">확인</button>
+      </form>
     </div>
   `
 })
@@ -22,5 +27,9 @@ export class VideoInputComponent {
 
   constructor() {
     this.inputList = VideoService.getLists();
+  }
+
+  textNormalization(): void {
+    console.log('hi');
   }
 }

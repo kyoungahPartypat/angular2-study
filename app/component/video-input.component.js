@@ -14,11 +14,14 @@ var VideoInputComponent = (function () {
     function VideoInputComponent() {
         this.inputList = video_service_1.VideoService.getLists();
     }
+    VideoInputComponent.prototype.textNormalization = function () {
+        console.log('hi');
+    };
     VideoInputComponent = __decorate([
         core_1.Component({
             selector: 'video-input',
             styles: ["\n\n    "],
-            template: "\n    <div  class=\"video-input\">\n      <select>\n        <option *ngFor=\"let name of inputList\" [value] =\"name\">{{name}}</option>\n      </select>\n      <input type=\"text\" />\n      <button>\uD655\uC778</button>\n    </div>\n  "
+            template: "\n    <div  class=\"video-input\">\n      <select>\n        <option *ngFor=\"let name of inputList\" [value] =\"name\">{{name}}</option>\n      </select>\n      <form (ngSubmit)=\"onSubmit()\" [formGroup]=\"form\">\n        <input type=\"text\" #name placeholder=\"title\"/>\n        <input type=\"text\" #url placeholder=\"url\"/>\n        <button type=\"submit\" (click)=\"textNormalization()\">\uD655\uC778</button>\n      </form>\n    </div>\n  "
         }), 
         __metadata('design:paramtypes', [])
     ], VideoInputComponent);
