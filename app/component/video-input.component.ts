@@ -36,7 +36,7 @@ export class VideoInputComponent {
   }
 
   addVideos (name: string, title:string, url:string) {
-    this.videoService.addVideos(name, title, url);
+    this.videoService.addVideos(name, title, url).then(result => console.log(result), error => console.log(error));
   }
 
 }

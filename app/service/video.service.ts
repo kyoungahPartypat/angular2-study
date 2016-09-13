@@ -33,10 +33,10 @@ class VideoService {
     return Promise.resolve(YOUTUBE);
   };
 
-  addVideos(name:string, title:string, url:string): Promise<TwiceYoutube> {
+  addVideos(name:string, title:string, url:string) {
     let body = JSON.stringify({name:name, title:title, url:url});
     let headers = new Headers({ 'Content-Type': 'application/json' });
-    let options = new RequestOptions({ headers: headers });
+    let options = new RequestOptions({ headers: headers,  method: "post" });
 
     return this.http.post(this.url, body, options).toPromise().then(this.extractData).catch(this.handleError);
   };

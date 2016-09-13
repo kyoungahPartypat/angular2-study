@@ -20,7 +20,7 @@ var VideoInputComponent = (function () {
         console.log('hi');
     };
     VideoInputComponent.prototype.addVideos = function (name, title, url) {
-        this.videoService.addVideos(name, title, url);
+        this.videoService.addVideos(name, title, url).then(function (result) { return console.log(result); }, function (error) { return console.log(error); });
     };
     VideoInputComponent = __decorate([
         core_1.Component({
