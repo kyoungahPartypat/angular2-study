@@ -45,8 +45,8 @@ export class VideoComponent implements OnInit{
 
   constructor(private videoService: VideoService) { }
 
-  getVideos(): void {
-    this.videoService.getVideos().then(video => this.video = video);
+  getVideos(member: string): void {
+    this.videoService.getVideos(member).then(video => this.video = video);
   }
 
   onListSelect(member) : void {
@@ -70,6 +70,6 @@ export class VideoComponent implements OnInit{
 
   ngOnInit(): void {
     this.list = VideoService.getLists();
-    this.getVideos();
+    this.getVideos("단체");
   }
 }

@@ -16,11 +16,8 @@ var VideoInputComponent = (function () {
         this.mode = 'Promise';
         this.inputList = video_service_1.VideoService.getLists();
     }
-    VideoInputComponent.prototype.textNormalization = function () {
-        console.log('hi');
-    };
     VideoInputComponent.prototype.addVideos = function (member, title, url) {
-        this.videoService.addVideos(member, title, url).then(function (result) { return console.log(result); }, function (error) { return console.log(error); });
+        this.videoService.addVideos(member, title, url).then(function (res) { return console.log(res.result); }, function (error) { return console.log(error); });
     };
     VideoInputComponent = __decorate([
         core_1.Component({

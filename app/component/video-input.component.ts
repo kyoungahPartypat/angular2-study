@@ -31,12 +31,8 @@ export class VideoInputComponent {
     this.inputList = VideoService.getLists();
   }
 
-  textNormalization(): void {
-    console.log('hi');
-  }
-
   addVideos (member: string, title:string, url:string) {
-    this.videoService.addVideos(member, title, url).then(result => console.log(result), error => console.log(error));
+    this.videoService.addVideos(member, title, url).then(res => console.log(res.result), error => console.log(error));
   }
 
 }

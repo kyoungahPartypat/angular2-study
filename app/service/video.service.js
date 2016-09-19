@@ -11,21 +11,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 var http_2 = require('@angular/http');
-var mock_youtube_1 = require('../model/mock-youtube');
 var VideoService = (function () {
     function VideoService(http) {
         this.http = http;
-        this.url = "http://sigyeiswatch.com/twice/upload";
+        this.getUrl = "http://sigyeiswatch.com/twice/list/";
+        this.postUrl = "http://sigyeiswatch.com/twice/upload";
     }
     VideoService.getLists = function () {
         return ['단체', '나연', '정연', '지효', '다현', '채영', '모모', '사나', '미나', '쯔위'];
     };
     ;
-    VideoService.prototype.extractData = function (res) {
-        var body = res.json();
-        console.log(body);
-        return body.data || {};
-    };
     VideoService.prototype.handleError = function (error) {
         // In a real world app, we might use a remote logging infrastructure
         // We'd also dig deeper into the error to get a better message
@@ -34,15 +29,17 @@ var VideoService = (function () {
         console.error(errMsg); // log to console instead
         return Promise.reject(errMsg);
     };
-    VideoService.prototype.getVideos = function () {
-        return Promise.resolve(mock_youtube_1.YOUTUBE);
+    VideoService.prototype.getVideos = function (member) {
+        console.log(member);
+        this.getUrl = this.getUrl + "/" + member;
+        return this.http.get(this.getUrl).toPromise().then(function (res) { return res.json(); }).catch(this.handleError);
     };
     ;
     VideoService.prototype.addVideos = function (member, title, url) {
         var body = JSON.stringify({ member: member, title: title, url: url });
         var headers = new http_2.Headers({ 'Content-Type': 'application/json' });
         var options = new http_2.RequestOptions({ headers: headers, method: "post" });
-        return this.http.post(this.url, body, options).toPromise().then(this.extractData).catch(this.handleError);
+        return this.http.post(this.postUrl, body, options).toPromise().then(function (res) { return res.json(); }).catch(this.handleError);
     };
     ;
     VideoService = __decorate([

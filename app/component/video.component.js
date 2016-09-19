@@ -14,9 +14,9 @@ var VideoComponent = (function () {
     function VideoComponent(videoService) {
         this.videoService = videoService;
     }
-    VideoComponent.prototype.getVideos = function () {
+    VideoComponent.prototype.getVideos = function (member) {
         var _this = this;
-        this.videoService.getVideos().then(function (video) { return _this.video = video; });
+        this.videoService.getVideos(member).then(function (video) { return _this.video = video; });
     };
     VideoComponent.prototype.onListSelect = function (member) {
         var _this = this;
@@ -36,7 +36,7 @@ var VideoComponent = (function () {
     };
     VideoComponent.prototype.ngOnInit = function () {
         this.list = video_service_1.VideoService.getLists();
-        this.getVideos();
+        this.getVideos("단체");
     };
     VideoComponent = __decorate([
         core_1.Component({

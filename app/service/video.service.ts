@@ -7,18 +7,15 @@ import { YOUTUBE } from '../model/mock-youtube';
 
 @Injectable()
 class VideoService {
-  private url = "http://sigyeiswatch.com/twice/upload";
+  private getUrl = "http://sigyeiswatch.com/twice/list/";
+  private postUrl = "http://sigyeiswatch.com/twice/upload";
+
   constructor (private http: Http) {}
 
   static getLists(){
     return ['단체', '나연', '정연', '지효', '다현', '채영', '모모', '사나', '미나', '쯔위'];
   };
 
-  private extractData(res: Response) {
-    let body = res.json();
-    console.log(body);
-    return body.data || { };
-  }
 
   private handleError (error: any) {
     // In a real world app, we might use a remote logging infrastructure
@@ -29,8 +26,10 @@ class VideoService {
     return Promise.reject(errMsg);
   }
 
-  getVideos(): Promise<TwiceYoutube[]> {
-    return Promise.resolve(YOUTUBE);
+  getVideos(member: string): Promise<TwiceYoutube[]> {
+    console.log(member);
+    this.getUrl = this.getUrl + "/" + member;
+    return this.http.get(this.getUrl).toPromise().then(res => res.json()).catch(this.handleError);
   };
 
   addVideos(member:string, title:string, url:string) {
@@ -38,7 +37,7 @@ class VideoService {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers,  method: "post" });
 
-    return this.http.post(this.url, body, options).toPromise().then(this.extractData).catch(this.handleError);
+    return this.http.post(this.postUrl, body, options).toPromise().then(res => res.json()).catch(this.handleError);
   };
 }
 
