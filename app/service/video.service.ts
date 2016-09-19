@@ -33,8 +33,8 @@ class VideoService {
     return Promise.resolve(YOUTUBE);
   };
 
-  addVideos(name:string, title:string, url:string) {
-    let body = JSON.stringify({name:name, title:title, url:url});
+  addVideos(member:string, title:string, url:string) {
+    let body = JSON.stringify({member:member, title:title, url:url});
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers,  method: "post" });
 

@@ -38,8 +38,8 @@ var VideoService = (function () {
         return Promise.resolve(mock_youtube_1.YOUTUBE);
     };
     ;
-    VideoService.prototype.addVideos = function (name, title, url) {
-        var body = JSON.stringify({ name: name, title: title, url: url });
+    VideoService.prototype.addVideos = function (member, title, url) {
+        var body = JSON.stringify({ member: member, title: title, url: url });
         var headers = new http_2.Headers({ 'Content-Type': 'application/json' });
         var options = new http_2.RequestOptions({ headers: headers, method: "post" });
         return this.http.post(this.url, body, options).toPromise().then(this.extractData).catch(this.handleError);
