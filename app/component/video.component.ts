@@ -13,7 +13,7 @@ import { VideoService } from '../service/video.service';
     #video > ul > li{width:100px; float:left; padding:5px; box-sizing:border-box}
     #video > ul > li > button{width:100%; height:30px}
     #video > ul.videos > li > button{border:1px solid #42d8cd; background-color:#FFF}
-    #video > ul.members > li > button{background-color:42d8cd; color:#FFF; border:none}
+    #video > ul.members > li > button{background-color:#42d8cd; color:#FFF; border:none}
 
     `],
   providers: [VideoService],
@@ -37,30 +37,29 @@ import { VideoService } from '../service/video.service';
 })
 
 export class VideoComponent implements OnInit{
-  subList: TwiceYoutube[];
+  subList: any;
   list: string[];
-  video: TwiceYoutube[];
-  selectedVideo: TwiceYoutube;
+  video: any;
+  selectedVideo: any;
   isShowInputVideo: boolean;
 
   constructor(private videoService: VideoService) { }
 
-  getVideos(member: string): void {
-    this.videoService.getVideos(member).then(video => this.video = video);
-  }
-
-  onListSelect(member) : void {
+  onListSelect(member: string) : void {
     this.subList = [];
     this.selectedVideo = null;
 
-    this.video.map((item, i)=>{
-      if(member === item.member){
-        this.subList.push(item);
-      }
-    });
+    this.videoService.getVideos(member).then(res =>
+      res.videos.map((item, i)=>{
+        if(member === item.member){
+          this.subList.push(item);
+        }
+      })
+    , error => console.log(error));
+
   }
 
-  onSelect(video: TwiceYoutube): void {
+  onSelect(video: any): void {
     this.selectedVideo = video;
   }
 
@@ -70,6 +69,6 @@ export class VideoComponent implements OnInit{
 
   ngOnInit(): void {
     this.list = VideoService.getLists();
-    this.getVideos("단체");
+
   }
 }

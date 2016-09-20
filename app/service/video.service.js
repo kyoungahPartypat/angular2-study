@@ -30,9 +30,8 @@ var VideoService = (function () {
         return Promise.reject(errMsg);
     };
     VideoService.prototype.getVideos = function (member) {
-        console.log(member);
-        this.getUrl = this.getUrl + "/" + member;
-        return this.http.get(this.getUrl).toPromise().then(function (res) { return res.json(); }).catch(this.handleError);
+        var paramUrl = this.getUrl + "/" + member;
+        return this.http.get(paramUrl).toPromise().then(function (res) { return res.json(); }).catch(this.handleError);
     };
     ;
     VideoService.prototype.addVideos = function (member, title, url) {

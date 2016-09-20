@@ -14,19 +14,17 @@ var VideoComponent = (function () {
     function VideoComponent(videoService) {
         this.videoService = videoService;
     }
-    VideoComponent.prototype.getVideos = function (member) {
-        var _this = this;
-        this.videoService.getVideos(member).then(function (video) { return _this.video = video; });
-    };
     VideoComponent.prototype.onListSelect = function (member) {
         var _this = this;
         this.subList = [];
         this.selectedVideo = null;
-        this.video.map(function (item, i) {
-            if (member === item.member) {
-                _this.subList.push(item);
-            }
-        });
+        this.videoService.getVideos(member).then(function (res) {
+            return res.videos.map(function (item, i) {
+                if (member === item.member) {
+                    _this.subList.push(item);
+                }
+            });
+        }, function (error) { return console.log(error); });
     };
     VideoComponent.prototype.onSelect = function (video) {
         this.selectedVideo = video;
@@ -36,12 +34,11 @@ var VideoComponent = (function () {
     };
     VideoComponent.prototype.ngOnInit = function () {
         this.list = video_service_1.VideoService.getLists();
-        this.getVideos("단체");
     };
     VideoComponent = __decorate([
         core_1.Component({
             selector: 'twice-video',
-            styles: ["\n    #video{width:500px; margin-left:auto; margin-right:auto}\n\n    #video > ul{width:100%; padding:5px}\n    #video > ul:after{content:\"\"; display:block; clear:both}\n    #video > ul > li{width:100px; float:left; padding:5px; box-sizing:border-box}\n    #video > ul > li > button{width:100%; height:30px}\n    #video > ul.videos > li > button{border:1px solid #42d8cd; background-color:#FFF}\n    #video > ul.members > li > button{background-color:42d8cd; color:#FFF; border:none}\n\n    "],
+            styles: ["\n    #video{width:500px; margin-left:auto; margin-right:auto}\n\n    #video > ul{width:100%; padding:5px}\n    #video > ul:after{content:\"\"; display:block; clear:both}\n    #video > ul > li{width:100px; float:left; padding:5px; box-sizing:border-box}\n    #video > ul > li > button{width:100%; height:30px}\n    #video > ul.videos > li > button{border:1px solid #42d8cd; background-color:#FFF}\n    #video > ul.members > li > button{background-color:#42d8cd; color:#FFF; border:none}\n\n    "],
             providers: [video_service_1.VideoService],
             template: "\n    <div id = \"video\">\n      <video-detail [video]=\"selectedVideo\"></video-detail>\n      <ul class = \"videos\">\n        <li *ngFor=\"let video of subList\">\n          <button (click)=\"onSelect(video)\">{{video.title}}</button>\n        </li>\n      </ul>\n      <ul class=\"members\">\n        <li *ngFor=\"let member of list\">\n          <button (click)=\"onListSelect(member)\">{{member}}</button>\n        </li>\n      </ul>\n      <button (click)=\"onInsertVideo()\">\uC9C1\uC811 \uC785\uB825\uD558\uAE30</button>\n      <video-input></video-input>\n    </div>\n  "
         }), 

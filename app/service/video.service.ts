@@ -26,10 +26,9 @@ class VideoService {
     return Promise.reject(errMsg);
   }
 
-  getVideos(member: string): Promise<TwiceYoutube[]> {
-    console.log(member);
-    this.getUrl = this.getUrl + "/" + member;
-    return this.http.get(this.getUrl).toPromise().then(res => res.json()).catch(this.handleError);
+  getVideos(member: string) {
+    let paramUrl:string = this.getUrl + "/" + member;
+    return this.http.get(paramUrl).toPromise().then(res => res.json()).catch(this.handleError);
   };
 
   addVideos(member:string, title:string, url:string) {
