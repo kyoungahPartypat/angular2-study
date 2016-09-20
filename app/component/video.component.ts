@@ -30,7 +30,6 @@ import { VideoService } from '../service/video.service';
           <button (click)="onListSelect(member)">{{member}}</button>
         </li>
       </ul>
-      <button (click)="onInsertVideo()">직접 입력하기</button>
       <video-input></video-input>
     </div>
   `

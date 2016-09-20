@@ -17,7 +17,7 @@ import { VideoService } from '../service/video.service';
     <div class="show-video">
       <h3>{{video ? video.title : 'Twice :D'}}</h3>
       <div class="show-box">
-        <iframe  *ngIf="video" width = "100%" height = "100%" [src]="updateVideoUrl(video.id)" frameborder="0" allowfullscreen></iframe>
+        <iframe  *ngIf="video" width = "100%" height = "100%" [src]="updateVideoUrl(video.url)" frameborder="0" allowfullscreen></iframe>
       </div>
     </div>
   `

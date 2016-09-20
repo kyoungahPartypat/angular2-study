@@ -22,7 +22,7 @@ var VideoInputComponent = (function () {
     VideoInputComponent = __decorate([
         core_1.Component({
             selector: 'video-input',
-            styles: ["\n\n    "],
+            styles: ["\n      div.video-input > select{width: 100px; height:30px}\n\n      div.video-input > input{width:120px; height:25px; font-size:13px}\n      div.video-input > button{width:120px; height:30px; font-size:13px; background-color:#FFF; border:1px solid #42d8cd}\n    "],
             providers: [video_service_1.VideoService],
             template: "\n    <div  class=\"video-input\">\n      <select #member>\n        <option *ngFor=\"let name of inputList\" [value] =\"name\">{{name}}</option>\n      </select>\n\n      <input type=\"text\" #title placeholder=\"title\"/>\n      <input type=\"text\" #url placeholder=\"url\"/>\n      <button type=\"submit\" (click)=\"addVideos(member.value, title.value, url.value)\">\uD655\uC778</button>\n\n    </div>\n  "
         }), 

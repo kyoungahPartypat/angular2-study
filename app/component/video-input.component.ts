@@ -6,7 +6,10 @@ import { VideoService } from '../service/video.service';
 @Component({
   selector: 'video-input',
   styles: [`
+      div.video-input > select{width: 100px; height:30px}
 
+      div.video-input > input{width:120px; height:25px; font-size:13px}
+      div.video-input > button{width:120px; height:30px; font-size:13px; background-color:#FFF; border:1px solid #42d8cd}
     `],
   providers: [VideoService],
   template: `
